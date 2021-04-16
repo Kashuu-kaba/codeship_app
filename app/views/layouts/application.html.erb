@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReviewApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+  <header>
+    <% if flash.present?%>
+      <% flash.each do |key, value|%>
+        <%= content_tag(:div, value, class:key) %>
+      <% end %>
+    <% end %>
+    <h1>
+      <%= image_tag "logo.svg" %>
+    </h1>
+     <nav>
+       <ul class="nav-items">
+         <li>
+           <%= link_to root_path do %>
+             <i class="fas fa-home"></i>
+             <span>ホーム</span>
+           <% end %>
+        </li>
+         <%if current_user%>
+           <li>ようこそ！<%= current_user.name %>さん</li>
+         <% if current_user.admin %>
+           <li>
+             <%= link_to new_product_path do %>
+               <i class="far fa-registered"></i>
+               <span>商品の登録</span>
+             <% end %>
+           </li>
+         <% end %>
+           <li>
+             <%= link_to products_path do %>
+               <i class="fas fa-search-plus"></i>
+               <span>商品を探す</span>
+             <% end %>
+          </li>
+           <li>
+             <%= link_to cart_products_path do %>
+               <i class="fas fa-shopping-cart"></i>
+               <span>カート</span>
+             <% end %>
+           </li>
+           <li>
+             <%= link_to  destroy_user_session_path, method: :delete do %>
+               <i class="fas fa-sign-out-alt"></i>
+               <span>ログアウト</span>
+             <% end %>
+           </li>
+         <% else%>
+           <li>ようこそ！ゲストさん</li>
+           <li>
+             <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Log in</span>
+             <% end %>
+           </li>
+           <li>
+             <%= link_to new_user_registration_path do %>
+               <i class="fas fa-user-plus"></i>
+               <span>Sign up</span>
+             <% end %>
+            </li>
+         <%end%>
+       </ul>
+     </nav>
+  </header>
+  <%= yield %>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

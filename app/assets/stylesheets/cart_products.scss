@@ -1,0 +1,45 @@
+// Place all the styles related to the cart_products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*====== カート内商品一覧 =======*/
+
+.table{
+  .table-header {
+    background: #ed882b;
+  }
+  .delete-button{
+    text-align: end;
+  }
+}
+
+.cart-btn-wrap {
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    line-height: 3rem;
+    width: 100%;
+    height: 3rem;
+    color: #fff;
+    border-radius: 0;
+    background: #000;
+    position: relative;
+    margin-top: 1rem;
+    &:hover {
+      background: #ed882b;
+      color: #fff;
+      transition: all .3s;
+    }
+  }
+  /*==== Modal Style ======*/
+  .modal-body{
+    .cart-product{
+      font-size: 1.2rem;
+    }
+    .cart-products-total {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+  }
+  .modal-header, .success-btn {
+    background: #ed882b;
+  }
